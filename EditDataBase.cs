@@ -19,10 +19,14 @@ namespace RentCarDocument
 
         DataBase dataBase = new DataBase();
 
+        //Brands data
         List<CarBrand> carBrands;
         CarBrand brandToDelete;
-
         Regex brandRegex = new Regex(@"[A-Za-z]");
+
+        //Models data
+        List<CarModel> carModels;
+
 
         public EditDataBase()
         {
@@ -31,15 +35,33 @@ namespace RentCarDocument
             carBrands = GetBrands();
             brandToDelete = carBrands.First();
 
+            carModels = GetModels();
 
-            UpdateDataView();
+
+            UpdateBrandsDataView();
+            UpdateModelsDataView();
+
+
             brandsComboBox.DataSource = carBrands;
             brandsComboBox.ValueMember = "brandId";
             brandsComboBox.DisplayMember = "brandName";
+
+            modelTabAddBrandsComboBox.DataSource = carBrands;
+            modelTabAddBrandsComboBox.ValueMember = "brandId";
+            modelTabAddBrandsComboBox.DisplayMember = "brandName";
+
+            modelTabDeleteBrandsComboBox.DataSource = carBrands;
+            modelTabDeleteBrandsComboBox.ValueMember = "brandId";
+            modelTabDeleteBrandsComboBox.DisplayMember = "brandName";
+
+            modelsComboBox.DataSource = carModels;
+            modelsComboBox.ValueMember = "modelId";
+            modelsComboBox.DisplayMember = "modelName";
+
         }
 
         #region TabBrand
-        private void UpdateDataView()
+        private void UpdateBrandsDataView()
         {
             brandsDataView.DataSource = carBrands;
         }
@@ -59,7 +81,7 @@ namespace RentCarDocument
 
             carBrands = GetBrands();
             brandsComboBox.DataSource = carBrands;
-            UpdateDataView();
+            UpdateBrandsDataView();
         }
 
         private void DeleteBrand_Click(object sender, EventArgs e)
@@ -67,7 +89,7 @@ namespace RentCarDocument
             DeleteBrandQuery(brandToDelete);
 
             carBrands = GetBrands();
-            UpdateDataView();
+            UpdateBrandsDataView();
             brandsComboBox.DataSource = carBrands;
         }
 
@@ -128,24 +150,65 @@ namespace RentCarDocument
 
         #region TabModel
 
+        private void DataBaseOptions_TabIndexChanged(object sender, EventArgs e)
+        {
+            carBrands = GetBrands();
+            carModels = GetModels();
 
+            brandsComboBox.DataSource = carBrands;
+            modelTabAddBrandsComboBox.DataSource = carBrands;
+            modelTabDeleteBrandsComboBox.DataSource = carBrands;
+
+            UpdateModelsDataView();
+            UpdateBrandsDataView();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            carModels = GetModels();
+            UpdateModelsDataView();
+            modelsComboBox.DataSource = carModels;
+        }
+
+        private List<CarModel> GetModels()
+        { 
+            List<CarModel> selectedModels = new List<CarModel>();
+            MySqlDataReader reader;
+
+
+            string query = "SELECT modelId, modelName, CarBrand FROM carrentaldatabase.carmodels JOIN carbrand ON carmodels.brandId = carbrand.idCarBrand;";
+            reader = dataBase.ReturnQuery(query);
+
+
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader["modelId"]);
+                string name = reader["modelName"].ToString();
+                string brand = reader["CarBrand"].ToString();
+                CarModel model = new CarModel(id, name, brand);
+
+                selectedModels.Add(model);
+
+            }
+
+            return selectedModels;
+        }
+
+        private void UpdateModelsDataView()
+        {
+            modelsDataView.DataSource = carModels;
+        }
 
         #endregion
 
-        private void DataBaseOptions_TabIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         private void DataBaseOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void tabPage1_Click(object sender, EventArgs e)
         {

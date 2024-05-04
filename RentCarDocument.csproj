@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarBrand.cs" />
+    <Compile Include="CarModel.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="EditDataBase.cs">
       <SubType>Form</SubType>

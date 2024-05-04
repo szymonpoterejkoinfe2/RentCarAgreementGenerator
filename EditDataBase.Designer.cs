@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.DataBaseOptions = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.brandTab = new System.Windows.Forms.TabPage();
             this.AddPanel = new System.Windows.Forms.Panel();
             this.ErrorLabelAdd = new System.Windows.Forms.Label();
             this.AddTitle = new System.Windows.Forms.Label();
@@ -43,37 +43,37 @@
             this.label1 = new System.Windows.Forms.Label();
             this.brandsComboBox = new System.Windows.Forms.ComboBox();
             this.brandsDataView = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.modelTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.modelsComboBox = new System.Windows.Forms.ComboBox();
+            this.deleteModelButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.modelTabDeleteBrandsComboBox = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.addModelButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.modelTabAddBrandsComboBox = new System.Windows.Forms.ComboBox();
+            this.modelTextBox = new System.Windows.Forms.TextBox();
+            this.modelsDataView = new System.Windows.Forms.DataGridView();
+            this.carTab = new System.Windows.Forms.TabPage();
             this.DataBaseOptions.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.brandTab.SuspendLayout();
             this.AddPanel.SuspendLayout();
             this.DeletePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.brandsDataView)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.modelTab.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.modelsDataView)).BeginInit();
             this.SuspendLayout();
             // 
             // DataBaseOptions
             // 
-            this.DataBaseOptions.Controls.Add(this.tabPage1);
-            this.DataBaseOptions.Controls.Add(this.tabPage2);
-            this.DataBaseOptions.Controls.Add(this.tabPage3);
+            this.DataBaseOptions.Controls.Add(this.brandTab);
+            this.DataBaseOptions.Controls.Add(this.modelTab);
+            this.DataBaseOptions.Controls.Add(this.carTab);
             this.DataBaseOptions.Location = new System.Drawing.Point(12, 12);
             this.DataBaseOptions.Name = "DataBaseOptions";
             this.DataBaseOptions.SelectedIndex = 0;
@@ -82,19 +82,19 @@
             this.DataBaseOptions.SelectedIndexChanged += new System.EventHandler(this.DataBaseOptions_SelectedIndexChanged);
             this.DataBaseOptions.TabIndexChanged += new System.EventHandler(this.DataBaseOptions_TabIndexChanged);
             // 
-            // tabPage1
+            // brandTab
             // 
-            this.tabPage1.Controls.Add(this.AddPanel);
-            this.tabPage1.Controls.Add(this.DeletePanel);
-            this.tabPage1.Controls.Add(this.brandsDataView);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 400);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Edytuj Marki";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            this.brandTab.Controls.Add(this.AddPanel);
+            this.brandTab.Controls.Add(this.DeletePanel);
+            this.brandTab.Controls.Add(this.brandsDataView);
+            this.brandTab.Location = new System.Drawing.Point(4, 22);
+            this.brandTab.Name = "brandTab";
+            this.brandTab.Padding = new System.Windows.Forms.Padding(3);
+            this.brandTab.Size = new System.Drawing.Size(768, 400);
+            this.brandTab.TabIndex = 0;
+            this.brandTab.Text = "Edytuj Marki";
+            this.brandTab.UseVisualStyleBackColor = true;
+            this.brandTab.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // AddPanel
             // 
@@ -247,134 +247,53 @@
             this.brandsDataView.TabIndex = 2;
             this.brandsDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.brandsDataView_CellContentClick);
             // 
-            // tabPage2
+            // modelTab
             // 
-            this.tabPage2.Controls.Add(this.panel2);
-            this.tabPage2.Controls.Add(this.panel1);
-            this.tabPage2.Controls.Add(this.dataGridView1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 400);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Edytuj Modele";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Location = new System.Drawing.Point(74, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(289, 140);
-            this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(52, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 16);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Model:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(52, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Marka:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(147, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(147, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.Location = new System.Drawing.Point(427, 43);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(267, 320);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(768, 400);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Edytuj Samochody";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(147, 95);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 26);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Dodaj";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.modelTab.Controls.Add(this.panel2);
+            this.modelTab.Controls.Add(this.panel1);
+            this.modelTab.Controls.Add(this.modelsDataView);
+            this.modelTab.Location = new System.Drawing.Point(4, 22);
+            this.modelTab.Name = "modelTab";
+            this.modelTab.Padding = new System.Windows.Forms.Padding(3);
+            this.modelTab.Size = new System.Drawing.Size(768, 400);
+            this.modelTab.TabIndex = 1;
+            this.modelTab.Text = "Edytuj Modele";
+            this.modelTab.UseVisualStyleBackColor = true;
+            this.modelTab.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.modelsComboBox);
+            this.panel2.Controls.Add(this.deleteModelButton);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Location = new System.Drawing.Point(74, 223);
+            this.panel2.Controls.Add(this.modelTabDeleteBrandsComboBox);
+            this.panel2.Location = new System.Drawing.Point(50, 223);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(289, 140);
             this.panel2.TabIndex = 5;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // button2
+            // modelsComboBox
             // 
-            this.button2.Location = new System.Drawing.Point(147, 95);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 26);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Usuń";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.modelsComboBox.FormattingEnabled = true;
+            this.modelsComboBox.Location = new System.Drawing.Point(147, 59);
+            this.modelsComboBox.Name = "modelsComboBox";
+            this.modelsComboBox.Size = new System.Drawing.Size(100, 21);
+            this.modelsComboBox.TabIndex = 5;
+            this.modelsComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // deleteModelButton
+            // 
+            this.deleteModelButton.Location = new System.Drawing.Point(147, 95);
+            this.deleteModelButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.deleteModelButton.Name = "deleteModelButton";
+            this.deleteModelButton.Size = new System.Drawing.Size(100, 26);
+            this.deleteModelButton.TabIndex = 4;
+            this.deleteModelButton.Text = "Usuń";
+            this.deleteModelButton.UseVisualStyleBackColor = true;
+            this.deleteModelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // label5
             // 
@@ -399,23 +318,106 @@
             this.label6.Text = "Marka:";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
-            // comboBox2
+            // modelTabDeleteBrandsComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(147, 23);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 1;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.modelTabDeleteBrandsComboBox.FormattingEnabled = true;
+            this.modelTabDeleteBrandsComboBox.Location = new System.Drawing.Point(147, 23);
+            this.modelTabDeleteBrandsComboBox.Name = "modelTabDeleteBrandsComboBox";
+            this.modelTabDeleteBrandsComboBox.Size = new System.Drawing.Size(100, 21);
+            this.modelTabDeleteBrandsComboBox.TabIndex = 1;
+            this.modelTabDeleteBrandsComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // comboBox3
+            // panel1
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(147, 59);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(100, 21);
-            this.comboBox3.TabIndex = 5;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.addModelButton);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.modelTabAddBrandsComboBox);
+            this.panel1.Controls.Add(this.modelTextBox);
+            this.panel1.Location = new System.Drawing.Point(50, 43);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(289, 140);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // addModelButton
+            // 
+            this.addModelButton.Location = new System.Drawing.Point(147, 95);
+            this.addModelButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.addModelButton.Name = "addModelButton";
+            this.addModelButton.Size = new System.Drawing.Size(100, 26);
+            this.addModelButton.TabIndex = 4;
+            this.addModelButton.Text = "Dodaj";
+            this.addModelButton.UseVisualStyleBackColor = true;
+            this.addModelButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(52, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Model:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(52, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Marka:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // modelTabAddBrandsComboBox
+            // 
+            this.modelTabAddBrandsComboBox.FormattingEnabled = true;
+            this.modelTabAddBrandsComboBox.Location = new System.Drawing.Point(147, 23);
+            this.modelTabAddBrandsComboBox.Name = "modelTabAddBrandsComboBox";
+            this.modelTabAddBrandsComboBox.Size = new System.Drawing.Size(100, 21);
+            this.modelTabAddBrandsComboBox.TabIndex = 1;
+            this.modelTabAddBrandsComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // modelTextBox
+            // 
+            this.modelTextBox.Location = new System.Drawing.Point(147, 59);
+            this.modelTextBox.Name = "modelTextBox";
+            this.modelTextBox.Size = new System.Drawing.Size(100, 20);
+            this.modelTextBox.TabIndex = 0;
+            this.modelTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // modelsDataView
+            // 
+            this.modelsDataView.AllowUserToAddRows = false;
+            this.modelsDataView.AllowUserToDeleteRows = false;
+            this.modelsDataView.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.modelsDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.modelsDataView.GridColor = System.Drawing.SystemColors.ButtonFace;
+            this.modelsDataView.Location = new System.Drawing.Point(387, 43);
+            this.modelsDataView.Name = "modelsDataView";
+            this.modelsDataView.ReadOnly = true;
+            this.modelsDataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.modelsDataView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.modelsDataView.Size = new System.Drawing.Size(339, 320);
+            this.modelsDataView.TabIndex = 0;
+            this.modelsDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // carTab
+            // 
+            this.carTab.Location = new System.Drawing.Point(4, 22);
+            this.carTab.Name = "carTab";
+            this.carTab.Padding = new System.Windows.Forms.Padding(3);
+            this.carTab.Size = new System.Drawing.Size(768, 400);
+            this.carTab.TabIndex = 2;
+            this.carTab.Text = "Edytuj Samochody";
+            this.carTab.UseVisualStyleBackColor = true;
+            this.carTab.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // EditDataBase
             // 
@@ -426,27 +428,27 @@
             this.Name = "EditDataBase";
             this.Text = "Edytuj Bazę Danych";
             this.DataBaseOptions.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.brandTab.ResumeLayout(false);
             this.AddPanel.ResumeLayout(false);
             this.AddPanel.PerformLayout();
             this.DeletePanel.ResumeLayout(false);
             this.DeletePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.brandsDataView)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.modelTab.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.modelsDataView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.TabControl DataBaseOptions;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage brandTab;
+        private System.Windows.Forms.TabPage modelTab;
+        private System.Windows.Forms.TabPage carTab;
         private System.Windows.Forms.Button AddBrand;
         private System.Windows.Forms.DataGridView brandsDataView;
         private System.Windows.Forms.TextBox carBrandTextBox;
@@ -460,18 +462,18 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label ErrorLabelDelete;
         private System.Windows.Forms.Label ErrorLabelAdd;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView modelsDataView;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox modelTabAddBrandsComboBox;
+        private System.Windows.Forms.TextBox modelTextBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button addModelButton;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox modelsComboBox;
+        private System.Windows.Forms.Button deleteModelButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox modelTabDeleteBrandsComboBox;
     }
 }
