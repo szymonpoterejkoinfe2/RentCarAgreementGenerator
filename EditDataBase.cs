@@ -25,8 +25,9 @@ namespace RentCarDocument
         Regex brandRegex = new Regex(@"[A-Za-z]");
 
         //Models data
-        List<CarModel> carModels;
-
+        List<CarModel> allCarModels;
+        List<CarModel> carModelsOfBrand;
+        Regex modelRegex = new Regex(@"[A-Za-z0-9]");
 
         public EditDataBase()
         {
@@ -35,8 +36,9 @@ namespace RentCarDocument
             carBrands = GetBrands();
             brandToDelete = carBrands.First();
 
-            carModels = GetModels();
 
+            allCarModels = GetModels();
+            carModelsOfBrand = GetModelsOfBrand(carBrands.First().brandName);
 
             UpdateBrandsDataView();
             UpdateModelsDataView();
@@ -54,9 +56,12 @@ namespace RentCarDocument
             modelTabDeleteBrandsComboBox.ValueMember = "brandId";
             modelTabDeleteBrandsComboBox.DisplayMember = "brandName";
 
-            modelsComboBox.DataSource = carModels;
+            modelsComboBox.DataSource = carModelsOfBrand;
             modelsComboBox.ValueMember = "modelId";
             modelsComboBox.DisplayMember = "modelName";
+
+            modelTabDeleteBrandsComboBox.SelectedItem = carBrands.First();
+            modelTabAddBrandsComboBox.SelectedItem = carBrands.First();
 
         }
 
@@ -153,21 +158,32 @@ namespace RentCarDocument
         private void DataBaseOptions_TabIndexChanged(object sender, EventArgs e)
         {
             carBrands = GetBrands();
-            carModels = GetModels();
+            allCarModels = GetModels();
 
             brandsComboBox.DataSource = carBrands;
             modelTabAddBrandsComboBox.DataSource = carBrands;
             modelTabDeleteBrandsComboBox.DataSource = carBrands;
 
+            modelTabDeleteBrandsComboBox.SelectedItem = carBrands.First();
+            modelTabAddBrandsComboBox.SelectedItem = carBrands.First();
+
             UpdateModelsDataView();
             UpdateBrandsDataView();
+            UpdateModelsBrandComboBox();
         }
 
         private void tabPage2_Click(object sender, EventArgs e)
         {
-            carModels = GetModels();
+            allCarModels = GetModels();
+
+            UpdateModelsBrandComboBox();
             UpdateModelsDataView();
-            modelsComboBox.DataSource = carModels;
+           
+        }
+
+        private void modelTabDeleteBrandsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            UpdateModelsBrandComboBox();
         }
 
         private List<CarModel> GetModels()
@@ -191,12 +207,116 @@ namespace RentCarDocument
 
             }
 
+            reader.Close();
+
             return selectedModels;
+        }
+
+        private List<CarModel> GetModelsOfBrand(string brandName)
+        {
+            List<CarModel> selectedModels = new List<CarModel>();
+            MySqlDataReader reader;
+
+            string query = $"SELECT modelId, modelName, CarBrand FROM carrentaldatabase.carmodels " +
+               $"JOIN carbrand ON carmodels.brandId = carbrand.idCarBrand " +
+               $"WHERE CarBrand = '{brandName}';";
+
+            reader = dataBase.ReturnQuery(query);
+
+            while (reader.Read())
+            {
+                int id = Convert.ToInt32(reader["modelId"]);
+                string name = reader["modelName"].ToString();
+                string brand = reader["CarBrand"].ToString();
+                CarModel model = new CarModel(id, name, brand);
+
+                selectedModels.Add(model);
+
+            }
+
+            reader.Close();
+
+            return selectedModels;
+
+        }
+
+        private void UpdateModelsBrandComboBox()
+        {
+            CarBrand selectedBrandDelete = modelTabDeleteBrandsComboBox.SelectedItem as CarBrand;
+            carModelsOfBrand = GetModelsOfBrand(selectedBrandDelete.brandName);
+
+            if (carModelsOfBrand.Count != 0)
+            {
+                modelsComboBox.DataSource = carModelsOfBrand;
+                modelsComboBox.ValueMember = "modelId";
+                modelsComboBox.DisplayMember = "modelName";
+            }
+            else {
+                modelsComboBox.DataSource = null;
+            }
+
         }
 
         private void UpdateModelsDataView()
         {
-            modelsDataView.DataSource = carModels;
+            allCarModels = GetModels();
+            modelsDataView.DataSource = allCarModels;
+        }
+
+        private void deleteModelButton_Click(object sender, EventArgs e)
+        {
+            CarModel carModelToDelete = modelsComboBox.SelectedItem as CarModel;
+
+            DeleteModelQuery(carModelToDelete);
+
+            UpdateModelsDataView();
+
+            UpdateModelsBrandComboBox();
+        }
+
+        private void addModelButton_Click(object sender, EventArgs e)
+        {
+            string inputModel = modelTextBox.Text;
+
+            if(modelRegex.IsMatch(inputModel))
+            {
+                CarBrand carBrand = modelTabAddBrandsComboBox.SelectedItem as CarBrand;
+                AddModelQuery(inputModel, carBrand.brandId);
+                modelTextBox.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Nie można używać znaków specjalnych. Proszę usunąć znaki specjalne z wprowadzonych danych!", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            UpdateModelsDataView();
+            UpdateModelsBrandComboBox();
+        }
+
+        private void DeleteModelQuery(CarModel carModel)
+        {
+            try {
+                string query = $"DELETE FROM carrentaldatabase.carmodels WHERE modelId = {carModel.modelId};";
+                dataBase.NonReturnQuery(query);
+                modelsComboBox.Text = "";
+            }
+            catch (Exception e)
+            {
+                errorLabelModelDelete.Text = e.Message;
+            }
+        }
+
+        private void AddModelQuery(string modelName,int brandId)
+        {
+            try
+            {
+                string query = $"INSERT INTO carrentaldatabase.carmodels (modelName, brandId) VALUES ('{modelName}','{brandId}');";
+                dataBase.NonReturnQuery(query);
+            }
+            catch (Exception e)
+            {
+                errorLabelModelAdd.Text = e.Message;    
+            }
         }
 
         #endregion
@@ -207,8 +327,6 @@ namespace RentCarDocument
         {
 
         }
-
-
 
         private void tabPage1_Click(object sender, EventArgs e)
         {
@@ -260,11 +378,6 @@ namespace RentCarDocument
 
         }
 
-        private void brandsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void brandsDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -285,11 +398,6 @@ namespace RentCarDocument
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -305,20 +413,14 @@ namespace RentCarDocument
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -330,14 +432,8 @@ namespace RentCarDocument
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
     }
 }
