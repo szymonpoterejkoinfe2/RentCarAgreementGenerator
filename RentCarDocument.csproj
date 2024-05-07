@@ -98,9 +98,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accessories.cs" />
+    <Compile Include="Agreement.cs" />
     <Compile Include="Car.cs" />
     <Compile Include="CarBrand.cs" />
     <Compile Include="CarModel.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="DataBase.cs" />
     <Compile Include="EditDataBase.cs">
       <SubType>Form</SubType>
@@ -120,8 +123,10 @@
     <Compile Include="GenerateAgreementForm.Designer.cs">
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs" />
     <EmbeddedResource Include="EditDataBase.resx">
       <DependentUpon>EditDataBase.cs</DependentUpon>
     </EmbeddedResource>

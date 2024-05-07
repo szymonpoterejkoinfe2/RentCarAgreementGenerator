@@ -67,6 +67,9 @@ namespace RentCarDocument
             brandsDataView.Columns[0].Width = 50;
             brandsDataView.Columns[0].HeaderText = "Id";
             brandsDataView.Columns[1].HeaderText = "Marka";
+
+            brandsDataView.DefaultCellStyle.SelectionBackColor = brandsDataView.DefaultCellStyle.BackColor;
+            brandsDataView.DefaultCellStyle.SelectionForeColor = brandsDataView.DefaultCellStyle.ForeColor;
         }
 
         private void AddBrand_Click(object sender, EventArgs e)
@@ -169,6 +172,9 @@ namespace RentCarDocument
             modelsDataView.Columns[0].HeaderText = "Id";
             modelsDataView.Columns[1].HeaderText = "Model";
             modelsDataView.Columns[2].HeaderText = "Marka";
+
+            modelsDataView.DefaultCellStyle.SelectionBackColor = brandsDataView.DefaultCellStyle.BackColor;
+            modelsDataView.DefaultCellStyle.SelectionForeColor = brandsDataView.DefaultCellStyle.ForeColor;
 
             modelTabAddBrandsComboBox.DataSource = carBrands;
             modelTabAddBrandsComboBox.ValueMember = "brandId";
@@ -395,6 +401,8 @@ namespace RentCarDocument
             carDataGridView.Columns[3].HeaderText = "Rejestracja";
             carDataGridView.Columns[3].Width = 65;
 
+            carDataGridView.DefaultCellStyle.SelectionBackColor = brandsDataView.DefaultCellStyle.BackColor;
+            carDataGridView.DefaultCellStyle.SelectionForeColor = brandsDataView.DefaultCellStyle.ForeColor;
         }
 
         private List<Car> GetCars()
