@@ -8,6 +8,7 @@ namespace RentCarDocument
 {
     internal static class Program
     {
+
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
@@ -17,8 +18,8 @@ namespace RentCarDocument
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-
-
         }
+
     }
+
 }

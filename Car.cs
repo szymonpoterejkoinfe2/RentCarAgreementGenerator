@@ -19,5 +19,6 @@ namespace RentCarDocument
             carModel = model;
             carRegistration = registration;
         }
+
     }
 }

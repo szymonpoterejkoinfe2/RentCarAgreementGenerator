@@ -31,5 +31,10 @@ namespace RentCarDocument
             generateAgreementForm.ShowDialog();
         }
 
+        private void statisticButton_Click(object sender, EventArgs e)
+        {
+            Statistics statistics = new Statistics();
+            statistics.ShowDialog();
+        }
     }
 }

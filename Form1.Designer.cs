@@ -31,6 +31,7 @@
             this.EditDataBaseButton = new System.Windows.Forms.Button();
             this.GenerateAgreementButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.statisticButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // EditDataBaseButton
@@ -70,11 +71,24 @@
             this.label1.Text = "Witaj!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // statisticButton
+            // 
+            this.statisticButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statisticButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.statisticButton.Location = new System.Drawing.Point(306, 339);
+            this.statisticButton.Name = "statisticButton";
+            this.statisticButton.Size = new System.Drawing.Size(239, 103);
+            this.statisticButton.TabIndex = 3;
+            this.statisticButton.Text = "Statystyki";
+            this.statisticButton.UseVisualStyleBackColor = true;
+            this.statisticButton.Click += new System.EventHandler(this.statisticButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(858, 504);
+            this.Controls.Add(this.statisticButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.GenerateAgreementButton);
             this.Controls.Add(this.EditDataBaseButton);
@@ -90,6 +104,7 @@
         private System.Windows.Forms.Button EditDataBaseButton;
         private System.Windows.Forms.Button GenerateAgreementButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button statisticButton;
     }
 }
 

@@ -86,3 +86,8 @@ C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument
 C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument.csproj.CopyComplete
 C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument.exe
 C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument.pdb
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument.Statistics.resources

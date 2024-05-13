@@ -39,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.pickUpLocationPanel = new System.Windows.Forms.Panel();
-            this.sameLocationTextBox = new System.Windows.Forms.CheckBox();
+            this.sameLocationCheckBox = new System.Windows.Forms.CheckBox();
             this.pickUpPostalCodeTextBox = new System.Windows.Forms.TextBox();
             this.pickUpStreetTextBox = new System.Windows.Forms.TextBox();
             this.pickUpCityTextBox = new System.Windows.Forms.TextBox();
@@ -49,6 +49,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.reservationPanel = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.costUpDown = new System.Windows.Forms.NumericUpDown();
             this.reservationNumber = new System.Windows.Forms.NumericUpDown();
             this.returnDateTime = new System.Windows.Forms.DateTimePicker();
             this.pickUpDateTime = new System.Windows.Forms.DateTimePicker();
@@ -79,9 +81,11 @@
             this.insuranceCheckBox = new System.Windows.Forms.CheckBox();
             this.abroadCheckBox = new System.Windows.Forms.CheckBox();
             this.label22 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.customerDataPanel.SuspendLayout();
             this.pickUpLocationPanel.SuspendLayout();
             this.reservationPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservationNumber)).BeginInit();
             this.returnLocationPanel.SuspendLayout();
             this.carPanel.SuspendLayout();
@@ -181,7 +185,7 @@
             // pickUpLocationPanel
             // 
             this.pickUpLocationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pickUpLocationPanel.Controls.Add(this.sameLocationTextBox);
+            this.pickUpLocationPanel.Controls.Add(this.sameLocationCheckBox);
             this.pickUpLocationPanel.Controls.Add(this.pickUpPostalCodeTextBox);
             this.pickUpLocationPanel.Controls.Add(this.pickUpStreetTextBox);
             this.pickUpLocationPanel.Controls.Add(this.pickUpCityTextBox);
@@ -193,19 +197,19 @@
             this.pickUpLocationPanel.Size = new System.Drawing.Size(184, 172);
             this.pickUpLocationPanel.TabIndex = 2;
             // 
-            // sameLocationTextBox
+            // sameLocationCheckBox
             // 
-            this.sameLocationTextBox.AutoSize = true;
-            this.sameLocationTextBox.Checked = true;
-            this.sameLocationTextBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.sameLocationTextBox.Location = new System.Drawing.Point(38, 128);
-            this.sameLocationTextBox.Name = "sameLocationTextBox";
-            this.sameLocationTextBox.Size = new System.Drawing.Size(114, 30);
-            this.sameLocationTextBox.TabIndex = 6;
-            this.sameLocationTextBox.Text = "Miejsce zwrotu\r\nw miejscu wydania";
-            this.sameLocationTextBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.sameLocationTextBox.UseVisualStyleBackColor = true;
-            this.sameLocationTextBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.sameLocationCheckBox.AutoSize = true;
+            this.sameLocationCheckBox.Checked = true;
+            this.sameLocationCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.sameLocationCheckBox.Location = new System.Drawing.Point(38, 128);
+            this.sameLocationCheckBox.Name = "sameLocationCheckBox";
+            this.sameLocationCheckBox.Size = new System.Drawing.Size(114, 30);
+            this.sameLocationCheckBox.TabIndex = 6;
+            this.sameLocationCheckBox.Text = "Miejsce zwrotu\r\nw miejscu wydania";
+            this.sameLocationCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sameLocationCheckBox.UseVisualStyleBackColor = true;
+            this.sameLocationCheckBox.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // pickUpPostalCodeTextBox
             // 
@@ -278,16 +282,40 @@
             // reservationPanel
             // 
             this.reservationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.reservationPanel.Controls.Add(this.label14);
+            this.reservationPanel.Controls.Add(this.costUpDown);
             this.reservationPanel.Controls.Add(this.reservationNumber);
             this.reservationPanel.Controls.Add(this.returnDateTime);
             this.reservationPanel.Controls.Add(this.pickUpDateTime);
             this.reservationPanel.Controls.Add(this.label12);
             this.reservationPanel.Controls.Add(this.label11);
             this.reservationPanel.Controls.Add(this.reservationNumberLabel);
-            this.reservationPanel.Location = new System.Drawing.Point(291, 47);
+            this.reservationPanel.Location = new System.Drawing.Point(274, 47);
             this.reservationPanel.Name = "reservationPanel";
-            this.reservationPanel.Size = new System.Drawing.Size(184, 164);
+            this.reservationPanel.Size = new System.Drawing.Size(218, 193);
             this.reservationPanel.TabIndex = 6;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 154);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(64, 26);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "Kwota\r\nZamówienia\r\n";
+            // 
+            // costUpDown
+            // 
+            this.costUpDown.DecimalPlaces = 2;
+            this.costUpDown.Location = new System.Drawing.Point(88, 154);
+            this.costUpDown.Maximum = new decimal(new int[] {
+            100000000,
+            0,
+            0,
+            0});
+            this.costUpDown.Name = "costUpDown";
+            this.costUpDown.Size = new System.Drawing.Size(80, 20);
+            this.costUpDown.TabIndex = 11;
             // 
             // reservationNumber
             // 
@@ -303,41 +331,43 @@
             // 
             // returnDateTime
             // 
+            this.returnDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.returnDateTime.Location = new System.Drawing.Point(88, 116);
             this.returnDateTime.Name = "returnDateTime";
-            this.returnDateTime.Size = new System.Drawing.Size(80, 20);
+            this.returnDateTime.Size = new System.Drawing.Size(112, 20);
             this.returnDateTime.TabIndex = 9;
             this.returnDateTime.Value = new System.DateTime(2024, 5, 7, 15, 53, 41, 0);
             // 
             // pickUpDateTime
             // 
+            this.pickUpDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.pickUpDateTime.Location = new System.Drawing.Point(88, 74);
             this.pickUpDateTime.Name = "pickUpDateTime";
-            this.pickUpDateTime.Size = new System.Drawing.Size(80, 20);
+            this.pickUpDateTime.Size = new System.Drawing.Size(112, 20);
             this.pickUpDateTime.TabIndex = 8;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 110);
+            this.label12.Location = new System.Drawing.Point(14, 110);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 26);
+            this.label12.Size = new System.Drawing.Size(61, 26);
             this.label12.TabIndex = 7;
-            this.label12.Text = "Data\r\nZwrotu";
+            this.label12.Text = "Data i Czas\r\nZwrotu";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(23, 68);
+            this.label11.Location = new System.Drawing.Point(14, 68);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 26);
+            this.label11.Size = new System.Drawing.Size(61, 26);
             this.label11.TabIndex = 5;
-            this.label11.Text = "Data\r\nWydania";
+            this.label11.Text = "Data i Czas\r\nWydania";
             // 
             // reservationNumberLabel
             // 
             this.reservationNumberLabel.AutoSize = true;
-            this.reservationNumberLabel.Location = new System.Drawing.Point(23, 28);
+            this.reservationNumberLabel.Location = new System.Drawing.Point(14, 28);
             this.reservationNumberLabel.Name = "reservationNumberLabel";
             this.reservationNumberLabel.Size = new System.Drawing.Size(59, 26);
             this.reservationNumberLabel.TabIndex = 0;
@@ -347,7 +377,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label18.Location = new System.Drawing.Point(300, 238);
+            this.label18.Location = new System.Drawing.Point(276, 282);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(171, 25);
             this.label18.TabIndex = 8;
@@ -362,9 +392,9 @@
             this.returnLocationPanel.Controls.Add(this.label15);
             this.returnLocationPanel.Controls.Add(this.label16);
             this.returnLocationPanel.Controls.Add(this.label17);
-            this.returnLocationPanel.Location = new System.Drawing.Point(291, 266);
+            this.returnLocationPanel.Location = new System.Drawing.Point(274, 310);
             this.returnLocationPanel.Name = "returnLocationPanel";
-            this.returnLocationPanel.Size = new System.Drawing.Size(184, 172);
+            this.returnLocationPanel.Size = new System.Drawing.Size(184, 127);
             this.returnLocationPanel.TabIndex = 9;
             // 
             // returnPostalCode
@@ -444,6 +474,7 @@
             this.modelComboBox.Name = "modelComboBox";
             this.modelComboBox.Size = new System.Drawing.Size(89, 21);
             this.modelComboBox.TabIndex = 7;
+            this.modelComboBox.SelectedValueChanged += new System.EventHandler(this.modelComboBox_SelectedValueChanged);
             // 
             // brandComboBox
             // 
@@ -452,6 +483,7 @@
             this.brandComboBox.Name = "brandComboBox";
             this.brandComboBox.Size = new System.Drawing.Size(89, 21);
             this.brandComboBox.TabIndex = 6;
+            this.brandComboBox.SelectedValueChanged += new System.EventHandler(this.brandComboBox_SelectedValueChanged);
             // 
             // label13
             // 
@@ -492,11 +524,11 @@
             // 
             // printButton
             // 
-            this.printButton.Location = new System.Drawing.Point(550, 357);
+            this.printButton.Location = new System.Drawing.Point(619, 357);
             this.printButton.Name = "printButton";
-            this.printButton.Size = new System.Drawing.Size(184, 81);
+            this.printButton.Size = new System.Drawing.Size(115, 81);
             this.printButton.TabIndex = 12;
-            this.printButton.Text = "Drukuj";
+            this.printButton.Text = "Generuj";
             this.printButton.UseVisualStyleBackColor = true;
             this.printButton.Click += new System.EventHandler(this.printButton_Click);
             // 
@@ -573,11 +605,23 @@
             this.label22.TabIndex = 13;
             this.label22.Text = "Dodatki";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(492, 357);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(115, 80);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Drukuj";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GenerateAgreementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.accessoriesPanel);
             this.Controls.Add(this.printButton);
@@ -600,6 +644,7 @@
             this.pickUpLocationPanel.PerformLayout();
             this.reservationPanel.ResumeLayout(false);
             this.reservationPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.costUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.reservationNumber)).EndInit();
             this.returnLocationPanel.ResumeLayout(false);
             this.returnLocationPanel.PerformLayout();
@@ -635,7 +680,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel reservationPanel;
         private System.Windows.Forms.Label reservationNumberLabel;
-        private System.Windows.Forms.CheckBox sameLocationTextBox;
+        private System.Windows.Forms.CheckBox sameLocationCheckBox;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Panel returnLocationPanel;
         private System.Windows.Forms.TextBox returnPostalCode;
@@ -665,5 +710,8 @@
         private System.Windows.Forms.CheckBox abroadCheckBox;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.NumericUpDown reservationNumber;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.NumericUpDown costUpDown;
+        private System.Windows.Forms.Button button1;
     }
 }
