@@ -11,15 +11,6 @@ using DocumentFormat.OpenXml;
 
 namespace RentCarDocument
 {
-    using System;
-    using System.IO;
-    using System.Windows.Forms;
-    using DocumentFormat.OpenXml.Wordprocessing;
-    using DocumentFormat.OpenXml.Packaging;
-    using DocumentFormat.OpenXml;
-
-    namespace RentCarDocument
-    {
         internal class Agreement
         {
             public Client client { set; get; } = null;
@@ -28,14 +19,9 @@ namespace RentCarDocument
             public Location returnLocation { set; get; } = null;
             public Accessories accessories { set; get; } = null;
             public Car car { set; get; } = null;
-            string pathToDocument = @"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\AgreementDocument\Umowa_Najmu.docx";
+            private string pathToDocument = @"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\AgreementDocument\Umowa_Najmu.docx";
 
-            public string GetDocumentPath()
-            {
-                return $@"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\GeneratedAgreements\umowa{reservation.reservationNumber}.docx";
-            }
-
-            public void PrintDocument()
+            public async void GenerateDocument()
             {
                 if (File.Exists(pathToDocument))
                 {
@@ -43,20 +29,29 @@ namespace RentCarDocument
 
                     using (WordprocessingDocument originalDoc = WordprocessingDocument.Open(pathToDocument, false))
                     {
-                        SaveDocumentAs(originalDoc, newFilePath);
+                        MakeCopyOfTemplateDocument(originalDoc, newFilePath);
 
                         using (WordprocessingDocument newDoc = WordprocessingDocument.Open(newFilePath, true))
                         {
-                            UpdateDocument(newDoc);
+                            await UpdateDocument(newDoc);
                             newDoc.Save();
+
+                            if (File.Exists(newFilePath))
+                            {
+                                MessageBox.Show("Dokument został wygenerowany pomyślnie", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else {
+                                MessageBox.Show("Błąd podczas generowania dokumentu", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            }
                         }
                     }
 
-                    MessageBox.Show("Dokument został wygenerowany pomyślnie", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
             }
 
-            private void SaveDocumentAs(WordprocessingDocument originalDoc, string newFilePath)
+            private void MakeCopyOfTemplateDocument(WordprocessingDocument originalDoc, string newFilePath)
             {
                 // Tworzymy nowy dokument DOCX
                 using (WordprocessingDocument newDoc = WordprocessingDocument.Create(newFilePath, WordprocessingDocumentType.Document))
@@ -68,15 +63,15 @@ namespace RentCarDocument
                     }
                 }
             }
-            private void UpdateDocument(WordprocessingDocument wordDoc)
+            private async Task UpdateDocument(WordprocessingDocument wordDoc)
             {
                 if (wordDoc != null)
                 {
-                    UpdateClient(wordDoc);
-                    UpdateReservation(wordDoc);
-                    UpdateLocation(wordDoc);
-                    UpdateCar(wordDoc);
-                    UpdateAccessories(wordDoc);
+                    await Task.Run(() => UpdateClient(wordDoc));
+                    await Task.Run(() => UpdateReservation(wordDoc));
+                    await Task.Run(() => UpdateLocation(wordDoc));
+                    await Task.Run(() => UpdateCar(wordDoc));
+                    await Task.Run(() => UpdateAccessories(wordDoc));
                 }
             }
 
@@ -176,7 +171,11 @@ namespace RentCarDocument
                     accessoriesFromAgreement += "Nawigacja, ";
                     accessoriesCount++;
                 }
-
+                if (accessories.kilometerLimit)
+                {
+                    accessoriesFromAgreement += "Brak limitu kilometrów, ";
+                    accessoriesCount++;
+                }
                 if (accessoriesCount >= 2)
                 {
                     accessoriesFromAgreement += "\n";
@@ -251,7 +250,6 @@ namespace RentCarDocument
 
 
         }
-    }
-
-
 }
+
+

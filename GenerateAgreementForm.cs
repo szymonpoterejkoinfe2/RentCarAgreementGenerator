@@ -1,6 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Packaging;
 using MySql.Data.MySqlClient;
-using RentCarDocument.RentCarDocument;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -192,7 +191,7 @@ namespace RentCarDocument
             agreement.accessories = accessories;
             #endregion
 
-            agreement.PrintDocument();
+            agreement.GenerateDocument();
             
 
 
@@ -323,24 +322,6 @@ namespace RentCarDocument
             }
 
         }
-        private void StartPrintung()
-        {
-            // Specify the path to your DOCX document
-            string docxFilePath = agreement.GetDocumentPath();
 
-            // Start the default process associated with the DOCX file.
-            ProcessStartInfo startInfo = new ProcessStartInfo
-            {
-                FileName = docxFilePath,
-                Verb = "Print"
-            };
-
-            // Start the process.
-            Process.Start(startInfo);
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            StartPrintung();
-        }
     }
 }
