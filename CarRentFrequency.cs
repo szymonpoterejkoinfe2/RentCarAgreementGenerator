@@ -14,7 +14,7 @@ namespace RentCarDocument
 
         public override List<Car> GetData()
         {
-            const string query = "SELECT Query for CarRentFrequency";
+            string query = "SELECT cars.carId, carbrand.CarBrand, carmodels.modelName, cars.carRegistration FROM carrentaldatabase.cars JOIN  carbrand ON cars.brandId = carbrand.idCarBrand JOIN carmodels ON cars.modelId = carmodels.modelId;";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 

@@ -136,6 +136,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentPeriodFrequency.cs" />
+    <Compile Include="RentPeriods.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="StatisticalData.cs" />
     <Compile Include="Statistics.cs">
