@@ -50,7 +50,6 @@ namespace RentCarDocument
 
                 }
             }
-
             private void MakeCopyOfTemplateDocument(WordprocessingDocument originalDoc, string newFilePath)
             {
                 // Tworzymy nowy dokument DOCX
@@ -74,7 +73,6 @@ namespace RentCarDocument
                     await Task.Run(() => UpdateAccessories(wordDoc));
                 }
             }
-
             private void ReplaceTextInDocx(WordprocessingDocument wordDoc, string searchText, string replaceText)
             {
                 foreach (var text in wordDoc.MainDocumentPart.Document.Body.Descendants<Text>())
@@ -85,7 +83,6 @@ namespace RentCarDocument
                     }
                 }
             }
-
             private void UpdateClient(WordprocessingDocument wordDoc)
             {
                 const string clientToReplace = "_CLIENTDATA_";
@@ -100,7 +97,6 @@ namespace RentCarDocument
                 string emailFromAgreement = $"{client.email}";
                 ReplaceTextInDocx(wordDoc, emailToReplace, emailFromAgreement);
             }
-
             private void UpdateReservation(WordprocessingDocument wordDoc)
             {
                 const string reservationNumberToReplace = "_NUMBER_";
@@ -131,7 +127,6 @@ namespace RentCarDocument
                 string reservationCostFromAgreement = reservation.price.ToString();
                 ReplaceTextInDocx(wordDoc, reservationCostToReplace, reservationCostFromAgreement);
             }
-
             private void UpdateLocation(WordprocessingDocument wordDoc)
             {
                 const string pickUpCityToReplace = "_PICKUPCITY_";
@@ -142,7 +137,6 @@ namespace RentCarDocument
                 string returnCityFromAgreement = $"{returnLocation.city} {returnLocation.street} {returnLocation.postalCode}";
                 ReplaceTextInDocx(wordDoc, returnCityToReplace, returnCityFromAgreement);
             }
-
             private void UpdateCar(WordprocessingDocument wordDoc)
             {
                 const string carToReplace = "_CARNAME_";
@@ -153,7 +147,6 @@ namespace RentCarDocument
                 string registrationFromAgreement = $"{car.carRegistration}";
                 ReplaceTextInDocx(wordDoc, registrationToReplace, registrationFromAgreement);
             }
-
             private void UpdateAccessories(WordprocessingDocument wordDoc)
             {
                 const string accessoriesToReplace = "_ACCESSORIES_";
@@ -247,7 +240,6 @@ namespace RentCarDocument
 
                 }
             }
-
 
         }
 }

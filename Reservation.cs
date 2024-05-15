@@ -37,6 +37,15 @@ namespace RentCarDocument
             }
             return 0;
         }
+        public TimeSpan GetReservationTimeSpan()
+        {
+            if (returnDate >= pickUpDate)
+            {
+                TimeSpan reservationTimeSpam = returnDate - pickUpDate;
+                return reservationTimeSpam;
+            }
+            return TimeSpan.Zero;
+        }
 
         public bool EvaluateAttributes()
         {
