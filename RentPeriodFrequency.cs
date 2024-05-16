@@ -14,7 +14,7 @@ namespace RentCarDocument
         private List<TimeSpan> rentPeriods;
         public override List<TimeSpan> GetData()
         {
-            const string query = "SELECT Query for RentPeriodFrequency";
+            const string query = "SELECT * FROM carrentaldatabase.reservations;";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 
@@ -29,7 +29,12 @@ namespace RentCarDocument
 
             while (reader.Read())
             {
-                // Getting rent time spans 
+                DateTime pickUpDateTime = Convert.ToDateTime(reader["reservationBeginDate"]);
+                DateTime returnDateTime = Convert.ToDateTime(reader["reservationEndDate"]);
+
+                TimeSpan rentTimeSpan = returnDateTime - pickUpDateTime;
+
+                selectedTimeSpans.Add(rentTimeSpan);
             }
 
             reader.Close();

@@ -98,6 +98,7 @@
             this.chart2.Location = new System.Drawing.Point(411, 234);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
             this.chart2.Series.Add(series2);
@@ -119,6 +120,7 @@
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
             series3.Name = "Series1";
+            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.rentPeriodsFrequenciesChart.Series.Add(series3);
             this.rentPeriodsFrequenciesChart.Size = new System.Drawing.Size(355, 205);
             this.rentPeriodsFrequenciesChart.TabIndex = 4;

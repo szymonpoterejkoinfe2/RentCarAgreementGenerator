@@ -39,16 +39,26 @@ namespace RentCarDocument
                             if (File.Exists(newFilePath))
                             {
                                 MessageBox.Show("Dokument został wygenerowany pomyślnie", "Sukces!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else {
-                                MessageBox.Show("Błąd podczas generowania dokumentu", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                                AddReservationToDataBase();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Błąd podczas generowania dokumentu", "Błąd!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
-
-
                 }
+            }
+
+            private void AddReservationToDataBase()
+            {
+                DataBase dataBase = new DataBase();
+
+                string query = $"INSERT INTO carrentaldatabase.reservations (reservationId, reservationBeginDate, reservationEndDate) VALUES ('{reservation.reservationNumber}', '{reservation.pickUpDate}', '{reservation.returnDate}');";
+                dataBase.NonReturnQuery(query);
+
+                dataBase.CloseConnection();
             }
             private void MakeCopyOfTemplateDocument(WordprocessingDocument originalDoc, string newFilePath)
             {

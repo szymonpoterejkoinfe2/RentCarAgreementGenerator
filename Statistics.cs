@@ -14,8 +14,6 @@ namespace RentCarDocument
 {
     public partial class Statistics : Form
     {
-
-
         public Statistics()
         {
             InitializeComponent();
@@ -34,15 +32,11 @@ namespace RentCarDocument
             if (carRentFrequency.EvaluateDateTimeValues() && rentPeriodFrequency.EvaluateDateTimeValues())
             { 
                 List<Car> cars = carRentFrequency.GetData();
-                //List<TimeSpan> periods = rentPeriodFrequency.GetData();
 
-                //UpdateFrequenciesChart
-                //RentPeriods rentPeriodsFrequencies = rentPeriodFrequency.GetFrequencies(periods);
-                //rentPeriodsFrequenciesChart.DataSource = rentPeriodsFrequencies;
 
                 InitializeCarFrequencyChart(cars);
-                
 
+                InitializeRentPeriodFrequenciesChart(rentPeriodFrequency);
             }
             else
             {
@@ -88,5 +82,26 @@ namespace RentCarDocument
             rentCarsFrequenciesChart.Series["Series1"].IsValueShownAsLabel = true;
         }
 
+        private void InitializeRentPeriodFrequenciesChart(RentPeriodFrequency rentPeriodFrequency)
+        {
+            List<TimeSpan> periods = rentPeriodFrequency.GetData();
+
+            //UpdateFrequenciesChart
+            RentPeriods rentPeriodsFrequencies = rentPeriodFrequency.GetFrequencies(periods);
+
+            rentPeriodsFrequenciesChart.ChartAreas[0].AxisX.Title = "Długość wynajmu w dniach";
+            rentPeriodsFrequenciesChart.ChartAreas[0].AxisY.Title = "Ilość wynajmów";
+            rentPeriodsFrequenciesChart.ChartAreas[0].AxisX.Interval = 1;
+            rentPeriodsFrequenciesChart.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+
+
+
+            rentPeriodsFrequenciesChart.Series["Series1"].Points.AddXY("1-3", rentPeriodsFrequencies.lengthOneToThree);
+            rentPeriodsFrequenciesChart.Series["Series1"].Points.AddXY("3-5", rentPeriodsFrequencies.lengthThreeToFive);
+            rentPeriodsFrequenciesChart.Series["Series1"].Points.AddXY("5-7", rentPeriodsFrequencies.lengthFiveToSeven);
+            rentPeriodsFrequenciesChart.Series["Series1"].Points.AddXY("7-14", rentPeriodsFrequencies.lengthSevenToFourteen);
+            rentPeriodsFrequenciesChart.Series["Series1"].Points.AddXY("14+", rentPeriodsFrequencies.lengthFourteenPlus);
+
+        }
     }
 }

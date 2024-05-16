@@ -33,6 +33,11 @@ namespace RentCarDocument
             }
         }
 
+        public void CloseConnection()
+        { 
+            connection.Close();
+        }
+
         public MySqlDataReader ReturnQuery(string query)
         {
             MySqlCommand mySqlCommand = new MySqlCommand(query, connection);
