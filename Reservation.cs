@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace RentCarDocument
 {
-    internal class Reservation
+    internal class Reservation : Info
     {
         public int reservationNumber { set; get; }
         public DateTime pickUpDate { set; get; }
@@ -37,17 +37,7 @@ namespace RentCarDocument
             }
             return 0;
         }
-        public TimeSpan GetReservationTimeSpan()
-        {
-            if (returnDate >= pickUpDate)
-            {
-                TimeSpan reservationTimeSpam = returnDate - pickUpDate;
-                return reservationTimeSpam;
-            }
-            return TimeSpan.Zero;
-        }
-
-        public bool EvaluateAttributes()
+        public override bool EvaluateAttributes()
         {
             if (reservationNumber < 0)
             {
@@ -69,11 +59,5 @@ namespace RentCarDocument
 
             return true;
         }
-
-        private void ShowErrorBox(string errorText)
-        {
-            MessageBox.Show($"{errorText}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
     }
 }

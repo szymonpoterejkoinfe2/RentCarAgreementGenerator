@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace RentCarDocument
 {
-    internal class Location
+    internal class Location : Info
     {
         public string city { set; get; }
         public string street { set; get; }
@@ -21,7 +21,7 @@ namespace RentCarDocument
             this.postalCode = postalCode;
         }
 
-        public bool EvaluateAttributes()
+        public override bool EvaluateAttributes()
         {
             Regex regexCity = new Regex(@"[A-Za-z]");
             Regex regexStreet = new Regex(@"[A-Za-z0-9]");
@@ -48,10 +48,7 @@ namespace RentCarDocument
             return true;
         }
 
-        private void ShowErrorBox(string errorText)
-        {
-            MessageBox.Show($"{errorText}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+
 
     }
 }

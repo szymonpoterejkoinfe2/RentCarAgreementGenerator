@@ -22,7 +22,6 @@ namespace RentCarDocument
 
             return rentPeriods;
         }
-
         protected override List<TimeSpan> GetDataFromDataBase(MySqlDataReader reader)
         {
             List<TimeSpan> selectedTimeSpans = new List<TimeSpan>();
@@ -41,7 +40,6 @@ namespace RentCarDocument
 
             return selectedTimeSpans;
         }
-
         public RentPeriods GetFrequencies(List<TimeSpan> timeSpans)
         {
             RentPeriods rentPeriods = new RentPeriods();

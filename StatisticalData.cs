@@ -11,7 +11,6 @@ namespace RentCarDocument
     {
         public DateTime startOfPeriodDate { set; get; }
         public DateTime endOfPeriodDate { set; get; }
-
         protected DataBase dataBase = new DataBase();
 
         public bool EvaluateDateTimeValues()
@@ -28,7 +27,6 @@ namespace RentCarDocument
         {
             return default(T); // Return default value for type T
         }
-
         protected virtual T GetDataFromDataBase(MySqlDataReader reader)
         { 
             return default(T);

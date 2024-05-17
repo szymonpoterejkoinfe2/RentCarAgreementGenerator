@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace RentCarDocument
 {
-    internal class Client
+    internal class Client : Info
     {
         public string name { set; get; }
         public string surname { set; get; }
@@ -25,7 +25,7 @@ namespace RentCarDocument
         }
 
         // returns True if attributes pass regex tests
-        public bool EvaluateAttributes()
+        public override bool EvaluateAttributes()
         { 
             Regex nameSurnameRegex = new Regex(@"[A-Za-z]");
             Regex phoneNumberRegex = new Regex(@"^\d{3}-\d{3}-\d{3}$");
@@ -50,11 +50,6 @@ namespace RentCarDocument
             }
 
             return true;
-        }
-
-        private void ShowErrorBox(string errorText)
-        {
-            MessageBox.Show($"{errorText}", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

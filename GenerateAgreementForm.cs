@@ -128,9 +128,10 @@ namespace RentCarDocument
                 returnLocationPanel.Visible = true;
             }
         }
-        private void printButton_Click(object sender, EventArgs e)
+        private void generateButton_Click(object sender, EventArgs e)
         {
 
+            bool[] evaluatedParams = {false,false,false}; 
 
             #region ClientDataEvaluation
 
@@ -139,6 +140,7 @@ namespace RentCarDocument
             if (client.EvaluateAttributes())
             { 
                 agreement.client = client;
+                evaluatedParams[0] = true;
             }
 
             #endregion
@@ -150,6 +152,7 @@ namespace RentCarDocument
             if (reservation.EvaluateAttributes())
             { 
                 agreement.reservation = reservation;
+                evaluatedParams[1] = true;
             }
 
             #endregion
@@ -164,6 +167,7 @@ namespace RentCarDocument
                 returnLocation = pickUpLocation;
                 agreement.pickUpLocation = pickUpLocation;
                 agreement.returnLocation = returnLocation;
+                evaluatedParams[2] = true;
             }
             else if (!sameLocationCheckBox.Checked)
             {
@@ -172,6 +176,7 @@ namespace RentCarDocument
                 {
                     agreement.pickUpLocation = pickUpLocation;
                     agreement.returnLocation = returnLocation;
+                    evaluatedParams[2] = true;
                 }
             }
 
@@ -191,10 +196,11 @@ namespace RentCarDocument
             agreement.accessories = accessories;
             #endregion
 
-            agreement.GenerateDocument();
-            
-
-
+            if (evaluatedParams[0] && evaluatedParams[1] && evaluatedParams[2])
+            {
+                agreement.GenerateDocument();
+            }
+       
         }
         private void InitializeCarComboBoxes()
         {

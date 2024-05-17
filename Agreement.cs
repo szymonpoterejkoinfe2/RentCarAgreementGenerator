@@ -19,7 +19,7 @@ namespace RentCarDocument
             public Location returnLocation { set; get; } = null;
             public Accessories accessories { set; get; } = null;
             public Car car { set; get; } = null;
-            private string pathToDocument = @"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\AgreementDocument\Umowa_Najmu.docx";
+            private readonly string pathToDocument = @"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\AgreementDocument\Umowa_Najmu.docx";
 
             public async void GenerateDocument()
             {
@@ -50,12 +50,11 @@ namespace RentCarDocument
                     }
                 }
             }
-
             private void AddReservationToDataBase()
             {
                 DataBase dataBase = new DataBase();
 
-                string query = $"INSERT INTO carrentaldatabase.reservations (reservationId, reservationBeginDate, reservationEndDate) VALUES ('{reservation.reservationNumber}', '{reservation.pickUpDate}', '{reservation.returnDate}');";
+                string query = $"INSERT INTO carrentaldatabase.reservations (reservationId, reservationBeginDate, reservationEndDate, reservationCost, reservationCar) VALUES ('{reservation.reservationNumber}', '{reservation.pickUpDate}', '{reservation.returnDate}','{reservation.price}','{car.carId}');";
                 dataBase.NonReturnQuery(query);
 
                 dataBase.CloseConnection();

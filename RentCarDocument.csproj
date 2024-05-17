@@ -132,6 +132,7 @@
     <Compile Include="GenerateAgreementForm.Designer.cs">
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Info.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

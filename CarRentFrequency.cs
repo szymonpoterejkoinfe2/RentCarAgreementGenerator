@@ -11,7 +11,6 @@ namespace RentCarDocument
     internal class CarRentFrequency: StatisticalData<List<Car>>
     {
         private List<Car> rentedCars;
-
         public override List<Car> GetData()
         {
             string query = "SELECT cars.carId, carbrand.CarBrand, carmodels.modelName, cars.carRegistration FROM carrentaldatabase.cars JOIN  carbrand ON cars.brandId = carbrand.idCarBrand JOIN carmodels ON cars.modelId = carmodels.modelId;";
@@ -22,7 +21,6 @@ namespace RentCarDocument
 
             return rentedCars;
         }
-
         protected override List<Car> GetDataFromDataBase(MySqlDataReader reader)
         {
             List<Car> selectCars = new List<Car>();
@@ -42,7 +40,5 @@ namespace RentCarDocument
 
             return selectCars;
         }
-
-
     }
 }
