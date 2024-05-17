@@ -1,25 +1,48 @@
-Agreement generator application is a C# windows forms application utilizing MySQL Database. The main functionality of the program is to generate rent car agreements and statistical reports. with information about the most frequently rented cars and most popular rent time period. In the main menu there are three selection options possible Edit database, generate agreement and statistics. In the edit database section user can add and remove car brands, add and remove car models and finally add and remove cars. Based on the data from the database and data inputted by the user it uses agreement template and find and replace functionality.
-Sketch of program interface:
+# Agreement Generator Application
 
-Main form:
-![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/9d63d7c4-7a8a-4c0e-bf29-9cab7272a01e)
+Agreement Generator Application to aplikacja Windows Forms w C#, wykorzystująca bazę danych MySQL. Główna funkcjonalność programu obejmuje generowanie umów najmu samochodów oraz raportów statystycznych zawierających informacje o najczęściej wynajmowanych samochodach i najpopularniejszych okresach wynajmu.
 
-Edit Database
-Edit Database consists of three subpages:
-	Edit brand page:
-	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/0f457bb0-2110-491a-8abd-f54f8cf9af3e)
+## Funkcje
 
-EditModel page:
-	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/ae72ced3-70ca-4f3b-87af-e887005bd1f2)
+W menu głównym dostępne są trzy opcje:
+1. **Edycja bazy danych**
+2. **Generowanie umów**
+3. **Statystyki**
 
-Edit Car:
-	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/453b4889-023b-4e7e-873b-a34838a2c1e3)
+### Edycja bazy danych
 
-Generate Agreement
-![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/993d7b0d-9e87-4d85-ad64-1cc87d4cb4ae)
+W sekcji edycji bazy danych użytkownik może dodawać i usuwać marki samochodów, modele samochodów oraz samochody. Sekcja ta składa się z trzech podstron:
 
-Statistics
-![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/3ab67958-bcf1-4c4d-9f39-2c62145009e7)
+#### Edycja marki
 
+![Edit Brand Page](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/0f457bb0-2110-491a-8abd-f54f8cf9af3e)
 
+#### Edycja modelu
 
+![Edit Model Page](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/ae72ced3-70ca-4f3b-87af-e887005bd1f2)
+
+#### Edycja samochodu
+
+![Edit Car Page](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/453b4889-023b-4e7e-873b-a34838a2c1e3)
+
+### Generowanie umowy
+
+Na podstawie danych z bazy oraz informacji wprowadzonych przez użytkownika, aplikacja korzysta z szablonu umowy oraz funkcji znajdź i zamień, aby wygenerować gotową umowę najmu.
+
+![Generate Agreement](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/993d7b0d-9e87-4d85-ad64-1cc87d4cb4ae)
+
+### Statystyki
+
+Aplikacja generuje raporty statystyczne, które zawierają informacje o najczęściej wynajmowanych samochodach oraz najpopularniejszych okresach wynajmu.
+
+![Statistics](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/3ab67958-bcf1-4c4d-9f39-2c62145009e7)
+
+## Interfejs użytkownika
+
+### Główne okno
+
+![Main Form](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/9d63d7c4-7a8a-4c0e-bf29-9cab7272a01e)
+
+## Autor
+
+Szymon Poterejko
