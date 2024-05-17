@@ -9,10 +9,10 @@ Edit Database consists of three subpages:
 	Edit brand page:
 	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/0f457bb0-2110-491a-8abd-f54f8cf9af3e)
 
-	EditModel page:
+EditModel page:
 	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/ae72ced3-70ca-4f3b-87af-e887005bd1f2)
 
-	Edit Car:
+Edit Car:
 	![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/453b4889-023b-4e7e-873b-a34838a2c1e3)
 
 Generate Agreement
