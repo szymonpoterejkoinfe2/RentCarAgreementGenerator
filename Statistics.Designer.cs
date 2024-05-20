@@ -31,23 +31,29 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Statistics));
             this.rentCarsFrequenciesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.startDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.averageValuesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.rentPeriodsFrequenciesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.generateChartsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.rentCarsFrequenciesChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.averageValuesChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentPeriodsFrequenciesChart)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,12 +71,17 @@
             this.rentCarsFrequenciesChart.Name = "rentCarsFrequenciesChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.IsValueShownAsLabel = true;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.rentCarsFrequenciesChart.Series.Add(series1);
             this.rentCarsFrequenciesChart.Size = new System.Drawing.Size(355, 205);
             this.rentCarsFrequenciesChart.TabIndex = 0;
             this.rentCarsFrequenciesChart.Text = "chart1";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title1.Name = "Title1";
+            title1.Text = "Ilość wynajmów samochodu";
+            this.rentCarsFrequenciesChart.Titles.Add(title1);
             // 
             // startDateTimePicker
             // 
@@ -86,25 +97,43 @@
             this.endDateTimePicker.Size = new System.Drawing.Size(291, 20);
             this.endDateTimePicker.TabIndex = 2;
             // 
-            // chart2
+            // averageValuesChart
             // 
-            this.chart2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.chart2.BorderlineColor = System.Drawing.Color.Black;
-            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.averageValuesChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.averageValuesChart.BorderlineColor = System.Drawing.Color.Black;
+            this.averageValuesChart.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            this.averageValuesChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(411, 234);
-            this.chart2.Name = "chart2";
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
+            this.averageValuesChart.Legends.Add(legend2);
+            this.averageValuesChart.Location = new System.Drawing.Point(411, 234);
+            this.averageValuesChart.Name = "averageValuesChart";
+            this.averageValuesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.EarthTones;
             series2.ChartArea = "ChartArea1";
+            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            series2.IsValueShownAsLabel = true;
+            series2.LabelFormat = "{0.0} zł";
             series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(355, 205);
-            this.chart2.TabIndex = 3;
-            this.chart2.Text = "chart2";
+            series2.Name = "Średni Koszt Najmu";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Spacing";
+            series4.ChartArea = "ChartArea1";
+            series4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            series4.IsValueShownAsLabel = true;
+            series4.LabelFormat = "{0} dni";
+            series4.Legend = "Legend1";
+            series4.Name = "Średnia Długość Najmu";
+            this.averageValuesChart.Series.Add(series2);
+            this.averageValuesChart.Series.Add(series3);
+            this.averageValuesChart.Series.Add(series4);
+            this.averageValuesChart.Size = new System.Drawing.Size(355, 205);
+            this.averageValuesChart.TabIndex = 3;
+            this.averageValuesChart.Text = "chart2";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            title2.Name = "Title1";
+            title2.Text = "Średnie wartości";
+            this.averageValuesChart.Titles.Add(title2);
             // 
             // rentPeriodsFrequenciesChart
             // 
@@ -117,14 +146,18 @@
             this.rentPeriodsFrequenciesChart.Legends.Add(legend3);
             this.rentPeriodsFrequenciesChart.Location = new System.Drawing.Point(50, 234);
             this.rentPeriodsFrequenciesChart.Name = "rentPeriodsFrequenciesChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
-            this.rentPeriodsFrequenciesChart.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Długość Wynajmu";
+            series5.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            this.rentPeriodsFrequenciesChart.Series.Add(series5);
             this.rentPeriodsFrequenciesChart.Size = new System.Drawing.Size(355, 205);
             this.rentPeriodsFrequenciesChart.TabIndex = 4;
             this.rentPeriodsFrequenciesChart.Text = "chart3";
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            title3.Name = "Title1";
+            title3.Text = "Długość wynajmów";
+            this.rentPeriodsFrequenciesChart.Titles.Add(title3);
             // 
             // panel1
             // 
@@ -174,12 +207,15 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.rentPeriodsFrequenciesChart);
-            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.averageValuesChart);
             this.Controls.Add(this.rentCarsFrequenciesChart);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Statistics";
             this.Text = "Dane statystyczne";
             ((System.ComponentModel.ISupportInitialize)(this.rentCarsFrequenciesChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.averageValuesChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentPeriodsFrequenciesChart)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -192,7 +228,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart rentCarsFrequenciesChart;
         private System.Windows.Forms.DateTimePicker startDateTimePicker;
         private System.Windows.Forms.DateTimePicker endDateTimePicker;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart averageValuesChart;
         private System.Windows.Forms.DataVisualization.Charting.Chart rentPeriodsFrequenciesChart;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button generateChartsButton;

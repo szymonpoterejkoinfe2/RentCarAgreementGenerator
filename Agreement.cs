@@ -54,7 +54,8 @@ namespace RentCarDocument
             {
                 DataBase dataBase = new DataBase();
 
-                string query = $"INSERT INTO carrentaldatabase.reservations (reservationId, reservationBeginDate, reservationEndDate, reservationCost, reservationCar) VALUES ('{reservation.reservationNumber}', '{reservation.pickUpDate}', '{reservation.returnDate}','{reservation.price}','{car.carId}');";
+                string cost = reservation.price.ToString().Replace(",", ".");
+                string query = $"INSERT INTO carrentaldatabase.reservations (reservationId, reservationBeginDate, reservationEndDate, reservationCost, reservationCarId) VALUES ('{reservation.reservationNumber}', '{reservation.pickUpDate}', '{reservation.returnDate}','{cost}','{car.carId}');";
                 dataBase.NonReturnQuery(query);
 
                 dataBase.CloseConnection();

@@ -52,8 +52,6 @@ namespace RentCarDocument
             string email = clientEmailTextBox.Text;
             string phoneNumber = clientPhoneNumberTextBox.Text;
 
-            //To do : Evaluate with regex.
-
             Client client = new Client(name,surname,phoneNumber, email);
             return client;
         }
@@ -81,7 +79,7 @@ namespace RentCarDocument
             int reservationNum = Convert.ToInt32(reservationNumber.Value);
             DateTime pickUpDate = pickUpDateTime.Value;
             DateTime returnDate = returnDateTime.Value;
-            decimal price = costUpDown.Value;
+            float price = ((float)costUpDown.Value);
 
             Reservation reservation = new Reservation(reservationNum,pickUpDate,returnDate,price);
 

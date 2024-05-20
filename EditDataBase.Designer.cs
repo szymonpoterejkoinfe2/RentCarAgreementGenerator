@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditDataBase));
             this.DataBaseOptions = new System.Windows.Forms.TabControl();
             this.brandTab = new System.Windows.Forms.TabPage();
             this.AddPanel = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             this.brandsDataView = new System.Windows.Forms.DataGridView();
             this.modelTab = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.errorLabelModelDelete = new System.Windows.Forms.Label();
             this.modelsComboBox = new System.Windows.Forms.ComboBox();
             this.deleteModelButton = new System.Windows.Forms.Button();
@@ -52,6 +54,7 @@
             this.brandDeleteText = new System.Windows.Forms.Label();
             this.modelTabDeleteBrandsComboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.errorLabelModelAdd = new System.Windows.Forms.Label();
             this.addModelButton = new System.Windows.Forms.Button();
             this.modelAddText = new System.Windows.Forms.Label();
@@ -61,6 +64,8 @@
             this.modelsDataView = new System.Windows.Forms.DataGridView();
             this.carTab = new System.Windows.Forms.TabPage();
             this.deleteCarPanel = new System.Windows.Forms.Panel();
+            this.deleteCarErrorLabel = new System.Windows.Forms.Label();
+            this.carDeleteRegistrationComboBox = new System.Windows.Forms.ComboBox();
             this.panelTitleDeleteCar = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -69,6 +74,7 @@
             this.deleteCarButton = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.addCarPanel = new System.Windows.Forms.Panel();
+            this.errorLabelCarAdd = new System.Windows.Forms.Label();
             this.panelTitleAddCar = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,11 +84,6 @@
             this.addCarButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.carDataGridView = new System.Windows.Forms.DataGridView();
-            this.carDeleteRegistrationComboBox = new System.Windows.Forms.ComboBox();
-            this.errorLabelCarAdd = new System.Windows.Forms.Label();
-            this.deleteCarErrorLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.DataBaseOptions.SuspendLayout();
             this.brandTab.SuspendLayout();
             this.AddPanel.SuspendLayout();
@@ -294,6 +295,17 @@
             this.panel2.Size = new System.Drawing.Size(289, 155);
             this.panel2.TabIndex = 1;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.Location = new System.Drawing.Point(86, 0);
+            this.label7.Name = "label7";
+            this.label7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label7.Size = new System.Drawing.Size(104, 25);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Usuń Model";
+            // 
             // errorLabelModelDelete
             // 
             this.errorLabelModelDelete.AutoSize = true;
@@ -366,6 +378,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(289, 155);
             this.panel1.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.Location = new System.Drawing.Point(86, 0);
+            this.label6.Name = "label6";
+            this.label6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.label6.Size = new System.Drawing.Size(109, 25);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Dodaj Model";
             // 
             // errorLabelModelAdd
             // 
@@ -469,6 +492,23 @@
             this.deleteCarPanel.Size = new System.Drawing.Size(199, 297);
             this.deleteCarPanel.TabIndex = 10;
             // 
+            // deleteCarErrorLabel
+            // 
+            this.deleteCarErrorLabel.AutoSize = true;
+            this.deleteCarErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.deleteCarErrorLabel.Location = new System.Drawing.Point(13, 225);
+            this.deleteCarErrorLabel.Name = "deleteCarErrorLabel";
+            this.deleteCarErrorLabel.Size = new System.Drawing.Size(0, 13);
+            this.deleteCarErrorLabel.TabIndex = 11;
+            // 
+            // carDeleteRegistrationComboBox
+            // 
+            this.carDeleteRegistrationComboBox.FormattingEnabled = true;
+            this.carDeleteRegistrationComboBox.Location = new System.Drawing.Point(79, 186);
+            this.carDeleteRegistrationComboBox.Name = "carDeleteRegistrationComboBox";
+            this.carDeleteRegistrationComboBox.Size = new System.Drawing.Size(100, 21);
+            this.carDeleteRegistrationComboBox.TabIndex = 10;
+            // 
             // panelTitleDeleteCar
             // 
             this.panelTitleDeleteCar.AutoSize = true;
@@ -553,6 +593,15 @@
             this.addCarPanel.Size = new System.Drawing.Size(199, 297);
             this.addCarPanel.TabIndex = 3;
             // 
+            // errorLabelCarAdd
+            // 
+            this.errorLabelCarAdd.AutoSize = true;
+            this.errorLabelCarAdd.ForeColor = System.Drawing.Color.Red;
+            this.errorLabelCarAdd.Location = new System.Drawing.Point(17, 225);
+            this.errorLabelCarAdd.Name = "errorLabelCarAdd";
+            this.errorLabelCarAdd.Size = new System.Drawing.Size(0, 13);
+            this.errorLabelCarAdd.TabIndex = 10;
+            // 
             // panelTitleAddCar
             // 
             this.panelTitleAddCar.AutoSize = true;
@@ -635,60 +684,15 @@
             this.carDataGridView.Size = new System.Drawing.Size(264, 297);
             this.carDataGridView.TabIndex = 2;
             // 
-            // carDeleteRegistrationComboBox
-            // 
-            this.carDeleteRegistrationComboBox.FormattingEnabled = true;
-            this.carDeleteRegistrationComboBox.Location = new System.Drawing.Point(79, 186);
-            this.carDeleteRegistrationComboBox.Name = "carDeleteRegistrationComboBox";
-            this.carDeleteRegistrationComboBox.Size = new System.Drawing.Size(100, 21);
-            this.carDeleteRegistrationComboBox.TabIndex = 10;
-            // 
-            // errorLabelCarAdd
-            // 
-            this.errorLabelCarAdd.AutoSize = true;
-            this.errorLabelCarAdd.ForeColor = System.Drawing.Color.Red;
-            this.errorLabelCarAdd.Location = new System.Drawing.Point(17, 225);
-            this.errorLabelCarAdd.Name = "errorLabelCarAdd";
-            this.errorLabelCarAdd.Size = new System.Drawing.Size(0, 13);
-            this.errorLabelCarAdd.TabIndex = 10;
-            // 
-            // deleteCarErrorLabel
-            // 
-            this.deleteCarErrorLabel.AutoSize = true;
-            this.deleteCarErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.deleteCarErrorLabel.Location = new System.Drawing.Point(13, 225);
-            this.deleteCarErrorLabel.Name = "deleteCarErrorLabel";
-            this.deleteCarErrorLabel.Size = new System.Drawing.Size(0, 13);
-            this.deleteCarErrorLabel.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label6.Location = new System.Drawing.Point(86, 0);
-            this.label6.Name = "label6";
-            this.label6.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label6.Size = new System.Drawing.Size(109, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Dodaj Model";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label7.Location = new System.Drawing.Point(86, 0);
-            this.label7.Name = "label7";
-            this.label7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.label7.Size = new System.Drawing.Size(104, 25);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Usuń Model";
-            // 
             // EditDataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.DataBaseOptions);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "EditDataBase";
             this.Text = "Edytuj Bazę Danych";
             this.DataBaseOptions.ResumeLayout(false);

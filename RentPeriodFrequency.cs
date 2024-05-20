@@ -14,7 +14,7 @@ namespace RentCarDocument
         private List<TimeSpan> rentPeriods;
         public override List<TimeSpan> GetData()
         {
-            const string query = "SELECT * FROM carrentaldatabase.reservations;";
+            string query = $"SELECT * FROM carrentaldatabase.reservations WHERE reservationBeginDate >= '{startOfPeriodDate}' AND reservationEndDate <= '{endOfPeriodDate}';";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 

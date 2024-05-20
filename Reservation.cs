@@ -12,9 +12,9 @@ namespace RentCarDocument
         public int reservationNumber { set; get; }
         public DateTime pickUpDate { set; get; }
         public DateTime returnDate { set; get; }
-        public decimal price { set; get; } = 0;
+        public float price { set; get; } = 0;
 
-        public Reservation(int number, DateTime pickDate, DateTime returnDate, decimal price) {
+        public Reservation(int number, DateTime pickDate, DateTime returnDate, float price) {
             
             reservationNumber = number;
             pickUpDate = pickDate;

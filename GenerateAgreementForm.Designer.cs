@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerateAgreementForm));
             this.customerDataPanel = new System.Windows.Forms.Panel();
             this.clientEmailTextBox = new System.Windows.Forms.TextBox();
             this.clientPhoneNumberTextBox = new System.Windows.Forms.TextBox();
@@ -634,6 +635,9 @@
             this.Controls.Add(this.pickUpLocationPanel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.customerDataPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "GenerateAgreementForm";
             this.Text = "Generuj Umowę";
             this.Load += new System.EventHandler(this.GenerateAgreementForm_Load);
