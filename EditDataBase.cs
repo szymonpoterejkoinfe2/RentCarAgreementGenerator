@@ -35,6 +35,8 @@ namespace RentCarDocument
         List<Car> carsWithRegistration;
         Regex registrationRegex = new Regex(@"[a-zA-Z]{2,3}\s?\w{4,5}");
 
+        const int empty = 0;
+
         public EditDataBase()
         {
             InitializeComponent();
@@ -51,13 +53,22 @@ namespace RentCarDocument
         private void InitializeTabBrand()
         {
             carBrands = GetBrands();
-            brandToDelete = carBrands.First();
 
-            brandsComboBox.DataSource = carBrands;
-            brandsComboBox.ValueMember = "brandId";
-            brandsComboBox.DisplayMember = "brandName";
+            if (carBrands.Count > empty)
+            {
+                brandToDelete = carBrands.First();
 
-            UpdateBrandsDataView();
+                brandsComboBox.DataSource = carBrands;
+                brandsComboBox.ValueMember = "brandId";
+                brandsComboBox.DisplayMember = "brandName";
+                UpdateBrandsDataView();
+
+            }
+            else {
+                brandsComboBox.Text = "";
+            }
+
+ 
         }
 
         private void UpdateBrandsDataView()
@@ -88,6 +99,7 @@ namespace RentCarDocument
             carBrands = GetBrands();
             brandsComboBox.DataSource = carBrands;
             UpdateBrandsDataView();
+            InitializeTabModel();
         }
 
         private void DeleteBrand_Click(object sender, EventArgs e)
@@ -102,15 +114,15 @@ namespace RentCarDocument
         private List<CarBrand> GetBrands()
         {
             MySqlDataReader reader;
-            string query = "SELECT * FROM carrentaldatabase.carbrand;";
+            string query = "SELECT * FROM carbrand;";
             reader = dataBase.ReturnQuery(query);
 
             List<CarBrand> selectBrands = new List<CarBrand>();
 
             while (reader.Read())
             {
-                int id = Convert.ToInt32(reader["idCarBrand"]);
-                string name = reader["CarBrand"].ToString();
+                int id = Convert.ToInt32(reader["brandId"]);
+                string name = reader["brandName"].ToString();
                 CarBrand brand = new CarBrand(id, name);
 
                 selectBrands.Add(brand);
@@ -125,7 +137,7 @@ namespace RentCarDocument
         {
             try
             {
-                string query = $"DELETE FROM carrentaldatabase.carbrand WHERE idCarBrand = {carBrand.brandId};";
+                string query = $"DELETE FROM carbrand WHERE brandId = {carBrand.brandId};";
                 dataBase.NonReturnQuery(query);
             }
             catch(Exception e)
@@ -138,7 +150,7 @@ namespace RentCarDocument
         {
             try
             {
-                string query = $"INSERT INTO carrentaldatabase.carbrand (CarBrand) VALUES ('{carBrand}');";
+                string query = $"INSERT INTO carbrand (brandName) VALUES ('{carBrand}');";
                 dataBase.NonReturnQuery(query);
             }
             catch (Exception e)
@@ -164,34 +176,41 @@ namespace RentCarDocument
         private void InitializeTabModel()
         {
             allCarModels = GetModels();
-            carModelsOfBrand = GetModelsOfBrand(carBrands.First().brandName);
 
-            UpdateModelsDataView();
+            if (allCarModels.Count != empty)
+            {
+                carModelsOfBrand = GetModelsOfBrand(carBrands.First().brandName);
 
-            modelsDataView.Columns[0].Width = 50;
-            modelsDataView.Columns[0].HeaderText = "Id";
-            modelsDataView.Columns[1].HeaderText = "Model";
-            modelsDataView.Columns[2].HeaderText = "Marka";
+                UpdateModelsDataView();
 
-            modelsDataView.DefaultCellStyle.SelectionBackColor = brandsDataView.DefaultCellStyle.BackColor;
-            modelsDataView.DefaultCellStyle.SelectionForeColor = brandsDataView.DefaultCellStyle.ForeColor;
 
-            modelTabAddBrandsComboBox.DataSource = carBrands;
-            modelTabAddBrandsComboBox.ValueMember = "brandId";
-            modelTabAddBrandsComboBox.DisplayMember = "brandName";
+                modelsDataView.Columns[0].Width = 50;
+                modelsDataView.Columns[0].HeaderText = "Id";
+                modelsDataView.Columns[1].HeaderText = "Model";
+                modelsDataView.Columns[2].HeaderText = "Marka";
 
-            modelTabDeleteBrandsComboBox.DataSource = carBrands;
-            modelTabDeleteBrandsComboBox.ValueMember = "brandId";
-            modelTabDeleteBrandsComboBox.DisplayMember = "brandName";
+                modelsDataView.DefaultCellStyle.SelectionBackColor = brandsDataView.DefaultCellStyle.BackColor;
+                modelsDataView.DefaultCellStyle.SelectionForeColor = brandsDataView.DefaultCellStyle.ForeColor;
+            }
 
-            modelsComboBox.DataSource = carModelsOfBrand;
-            modelsComboBox.ValueMember = "modelId";
-            modelsComboBox.DisplayMember = "modelName";
+                modelTabAddBrandsComboBox.DataSource = carBrands;
+                modelTabAddBrandsComboBox.ValueMember = "brandId";
+                modelTabAddBrandsComboBox.DisplayMember = "brandName";
 
-            modelTabDeleteBrandsComboBox.SelectedItem = carBrands.First();
-            modelTabAddBrandsComboBox.SelectedItem = carBrands.First();
+                modelTabDeleteBrandsComboBox.DataSource = carBrands;
+                modelTabDeleteBrandsComboBox.ValueMember = "brandId";
+                modelTabDeleteBrandsComboBox.DisplayMember = "brandName";
 
-            
+                modelsComboBox.DataSource = carModelsOfBrand;
+                modelsComboBox.ValueMember = "modelId";
+                modelsComboBox.DisplayMember = "modelName";
+
+            if (carBrands.Count > empty)
+            {
+                modelTabDeleteBrandsComboBox.SelectedItem = carBrands.First();
+                modelTabAddBrandsComboBox.SelectedItem = carBrands.First();
+            }
+
         }
 
         private void DataBaseOptions_TabIndexChanged(object sender, EventArgs e)
@@ -231,7 +250,7 @@ namespace RentCarDocument
             MySqlDataReader reader;
 
 
-            string query = "SELECT modelId, modelName, CarBrand FROM carrentaldatabase.carmodels JOIN carbrand ON carmodels.brandId = carbrand.idCarBrand;";
+            string query = "SELECT modelId, modelName, brandName FROM carmodel JOIN carbrand ON carmodel.brandId = carbrand.brandId;";
             reader = dataBase.ReturnQuery(query);
 
 
@@ -239,7 +258,7 @@ namespace RentCarDocument
             {
                 int id = Convert.ToInt32(reader["modelId"]);
                 string name = reader["modelName"].ToString();
-                string brand = reader["CarBrand"].ToString();
+                string brand = reader["brandName"].ToString();
                 CarModel model = new CarModel(id, name, brand);
 
                 selectedModels.Add(model);
@@ -256,9 +275,9 @@ namespace RentCarDocument
             List<CarModel> selectedModels = new List<CarModel>();
             MySqlDataReader reader;
 
-            string query = $"SELECT modelId, modelName, CarBrand FROM carrentaldatabase.carmodels " +
-               $"JOIN carbrand ON carmodels.brandId = carbrand.idCarBrand " +
-               $"WHERE CarBrand = '{brandName}';";
+            string query = $"SELECT modelId, modelName, brandName FROM carmodel " +
+               $"JOIN carbrand ON carmodel.brandId = carbrand.brandId " +
+               $"WHERE brandName = '{brandName}';";
 
             reader = dataBase.ReturnQuery(query);
 
@@ -266,7 +285,7 @@ namespace RentCarDocument
             {
                 int id = Convert.ToInt32(reader["modelId"]);
                 string name = reader["modelName"].ToString();
-                string brand = reader["CarBrand"].ToString();
+                string brand = reader["brandName"].ToString();
                 CarModel model = new CarModel(id, name, brand);
 
                 selectedModels.Add(model);
@@ -284,7 +303,7 @@ namespace RentCarDocument
             CarBrand selectedBrandDelete = modelTabDeleteBrandsComboBox.SelectedItem as CarBrand;
             carModelsOfBrand = GetModelsOfBrand(selectedBrandDelete.brandName);
 
-            if (carModelsOfBrand.Count != 0)
+            if (carModelsOfBrand.Count != empty)
             {
                 modelsComboBox.DataSource = carModelsOfBrand;
                 modelsComboBox.ValueMember = "modelId";
@@ -335,7 +354,7 @@ namespace RentCarDocument
         private void DeleteModelQuery(CarModel carModel)
         {
             try {
-                string query = $"DELETE FROM carrentaldatabase.carmodels WHERE modelId = {carModel.modelId};";
+                string query = $"DELETE FROM carmodel WHERE modelId = {carModel.modelId};";
                 dataBase.NonReturnQuery(query);
                 modelsComboBox.Text = "";
             }
@@ -349,7 +368,7 @@ namespace RentCarDocument
         {
             try
             {
-                string query = $"INSERT INTO carrentaldatabase.carmodels (modelName, brandId) VALUES ('{modelName}','{brandId}');";
+                string query = $"INSERT INTO carmodel (modelName, brandId) VALUES ('{modelName}','{brandId}');";
                 dataBase.NonReturnQuery(query);
             }
             catch (Exception e)
@@ -410,13 +429,13 @@ namespace RentCarDocument
             List<Car> selectedCars = new List<Car>();
             MySqlDataReader reader;
 
-            string query = "SELECT cars.carId, carbrand.CarBrand, carmodels.modelName, cars.carRegistration FROM carrentaldatabase.cars JOIN  carbrand ON cars.brandId = carbrand.idCarBrand JOIN carmodels ON cars.modelId = carmodels.modelId;";
+            string query = "SELECT car.carId, carbrand.brandName, carmodel.modelName, car.carRegistration FROM car JOIN  carbrand ON car.brandId = carbrand.brandId JOIN carmodel ON car.modelId = carmodel.modelId;";
             reader = dataBase.ReturnQuery(query);
 
             while (reader.Read())
             {
                 int carId = Convert.ToInt32(reader["carId"]);
-                string brandName = reader["CarBrand"].ToString();
+                string brandName = reader["brandName"].ToString();
                 string modelName = reader["modelName"].ToString();
                 string registration = reader["carRegistration"].ToString();
 
@@ -443,18 +462,22 @@ namespace RentCarDocument
         {
             CarBrand selectedBrand = brandComboBox.SelectedItem as CarBrand;
 
-            carModelsOfBrand = GetModelsOfBrand(selectedBrand.brandName);
+            if (selectedBrand != null)
+            {
+                carModelsOfBrand = GetModelsOfBrand(selectedBrand.brandName);
 
-            if (carModelsOfBrand.Count != 0)
-            {
-                modelComboBox.DataSource = carModelsOfBrand;
-                modelComboBox.ValueMember = "modelId";
-                modelComboBox.DisplayMember = "modelName";
+                if (carModelsOfBrand.Count != empty)
+                {
+                    modelComboBox.DataSource = carModelsOfBrand;
+                    modelComboBox.ValueMember = "modelId";
+                    modelComboBox.DisplayMember = "modelName";
+                }
+                else
+                {
+                    modelComboBox.DataSource = null;
+                }
             }
-            else
-            {
-                modelComboBox.DataSource = null;
-            }
+
         }
 
         private void addCarButton_Click(object sender, EventArgs e)
@@ -481,7 +504,7 @@ namespace RentCarDocument
         {
             try
             {
-                string query = $"INSERT INTO carrentaldatabase.cars (brandId,modelId,carRegistration) VALUES ('{brandId}','{modelId}','{registration}');";
+                string query = $"INSERT INTO car (brandId,modelId,carRegistration) VALUES ('{brandId}','{modelId}','{registration}');";
                 dataBase.NonReturnQuery(query);
             }
             catch (Exception e)
@@ -499,18 +522,23 @@ namespace RentCarDocument
         {
             CarBrand selectedBrand = deleteCarBrandComboBox.SelectedItem as CarBrand;
             CarModel selectedModel = deleteCarModelComboBox.SelectedItem as CarModel;
+            if (selectedBrand != null && selectedModel != null)
+            {
+                carsWithRegistration = GetCarsWithRegistration(selectedBrand.brandName, selectedModel.modelName);
 
-            carsWithRegistration = GetCarsWithRegistration(selectedBrand.brandName,selectedModel.modelName);
+                if (carsWithRegistration.Count > 0)
+                {
+                    carDeleteRegistrationComboBox.DataSource = carsWithRegistration;
+                    carDeleteRegistrationComboBox.ValueMember = "carId";
+                    carDeleteRegistrationComboBox.DisplayMember = "carRegistration";
+                }
+                else
+                {
+                    carDeleteRegistrationComboBox.DataSource = null;
+                }
 
-            if(carsWithRegistration.Count > 0)
-            { 
-                carDeleteRegistrationComboBox.DataSource = carsWithRegistration;
-                carDeleteRegistrationComboBox.ValueMember = "carId";
-                carDeleteRegistrationComboBox.DisplayMember = "carRegistration";
             }
-            else {
-                carDeleteRegistrationComboBox.DataSource = null;
-            }
+
         }
 
         private List<Car> GetCarsWithRegistration(string brandName, string modelName)
@@ -519,14 +547,14 @@ namespace RentCarDocument
 
             MySqlDataReader reader;
 
-            string query = $"SELECT cars.carId, carbrand.CarBrand, carmodels.modelName, cars.carRegistration FROM carrentaldatabase.cars JOIN carbrand ON cars.brandId = carbrand.idCarBrand JOIN carmodels ON cars.modelId = carmodels.modelId  WHERE carbrand.CarBrand = '{brandName}' AND carmodels.modelName = '{modelName}';";
+            string query = $"SELECT car.carId, carbrand.brandName, carmodel.modelName, car.carRegistration FROM car JOIN carbrand ON car.brandId = carbrand.brandId JOIN carmodel ON car.modelId = carmodel.modelId  WHERE carbrand.brandName = '{brandName}' AND carmodel.modelName = '{modelName}';";
 
             reader = dataBase.ReturnQuery(query);
 
             while (reader.Read())
             {
                 int carId = Convert.ToInt32(reader["carId"]);
-                string brand = reader["CarBrand"].ToString();
+                string brand = reader["brandName"].ToString();
                 string model = reader["modelName"].ToString();
                 string registration = reader["carRegistration"].ToString();
 
@@ -553,7 +581,7 @@ namespace RentCarDocument
         {
             try
             {
-                string query = $"DELETE FROM carrentaldatabase.cars WHERE carId = {carToDelete.carId};";
+                string query = $"DELETE FROM car WHERE carId = {carToDelete.carId};";
                 dataBase.NonReturnQuery(query);
                 modelsComboBox.Text = "";
             }

@@ -11,7 +11,7 @@ namespace RentCarDocument
 {
     internal class DataBase
     {
-        string connectionDetails = "server = localhost;uid=root;pwd=Goleszycow37;database=carrentaldatabase";
+        string connectionDetails = "server = localhost;uid=root;pwd=Goleszycow37;database=rentcar";
 
         MySqlConnection connection;
 
@@ -51,11 +51,6 @@ namespace RentCarDocument
             MySqlCommand addToTable = new MySqlCommand(query, connection);
           
             addToTable.ExecuteNonQuery();
-        }
-
-        public string GetDataBaseName()
-        {
-            return connection.Database;
         }
     }
 }

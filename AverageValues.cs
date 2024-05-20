@@ -15,7 +15,7 @@ namespace RentCarDocument
         public override List<float> GetData()
         {
 
-            string query = $"SELECT reservationCost FROM carrentaldatabase.reservations WHERE reservationBeginDate >= '{startOfPeriodDate}' AND reservationEndDate <= '{endOfPeriodDate}';";
+            string query = $"SELECT reservationCost FROM reservation WHERE pickUpDateTime >= '{startOfPeriodDate}' AND returnDateTime <= '{endOfPeriodDate}';";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 

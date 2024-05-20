@@ -13,7 +13,7 @@ namespace RentCarDocument
         private List<Car> rentedCars;
         public override List<Car> GetData()
         {
-            string query = "SELECT cars.carId, carbrand.CarBrand, carmodels.modelName, cars.carRegistration FROM carrentaldatabase.cars JOIN  carbrand ON cars.brandId = carbrand.idCarBrand JOIN carmodels ON cars.modelId = carmodels.modelId;";
+            string query = $"SELECT reservation.carId, brandName, modelName, carRegistration FROM reservation JOIN car ON reservation.carId = car.carId JOIN carmodel ON car.modelId = carmodel.modelId JOIN carbrand On carmodel.brandId = carbrand.brandId WHERE pickUpDateTime >= '{startOfPeriodDate}' AND returnDateTime <= '{endOfPeriodDate}';";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 
@@ -28,7 +28,7 @@ namespace RentCarDocument
             while (reader.Read())
             {
                 int carId = Convert.ToInt32(reader["carId"]);
-                string brand = reader["CarBrand"].ToString();
+                string brand = reader["brandName"].ToString();
                 string model = reader["modelName"].ToString();
                 string registration = reader["carRegistration"].ToString();
 

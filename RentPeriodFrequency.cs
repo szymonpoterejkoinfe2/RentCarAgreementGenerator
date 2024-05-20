@@ -14,7 +14,7 @@ namespace RentCarDocument
         private List<TimeSpan> rentPeriods;
         public override List<TimeSpan> GetData()
         {
-            string query = $"SELECT * FROM carrentaldatabase.reservations WHERE reservationBeginDate >= '{startOfPeriodDate}' AND reservationEndDate <= '{endOfPeriodDate}';";
+            string query = $"SELECT * FROM reservation WHERE pickUpDateTime >= '{startOfPeriodDate}' AND returnDateTime <= '{endOfPeriodDate}';";
 
             MySqlDataReader dataReader = base.dataBase.ReturnQuery(query);
 
@@ -28,8 +28,8 @@ namespace RentCarDocument
 
             while (reader.Read())
             {
-                DateTime pickUpDateTime = Convert.ToDateTime(reader["reservationBeginDate"]);
-                DateTime returnDateTime = Convert.ToDateTime(reader["reservationEndDate"]);
+                DateTime pickUpDateTime = Convert.ToDateTime(reader["pickUpDateTime"]);
+                DateTime returnDateTime = Convert.ToDateTime(reader["returnDateTime"]);
 
                 TimeSpan rentTimeSpan = returnDateTime - pickUpDateTime;
 
