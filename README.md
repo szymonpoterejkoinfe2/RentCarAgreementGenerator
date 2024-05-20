@@ -43,6 +43,9 @@ The application generates statistical reports that contain information about the
 
 ![Main Form](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/9d63d7c4-7a8a-4c0e-bf29-9cab7272a01e)
 
+## Database Model
+![image](https://github.com/szymonpoterejkoinfe2/RentCarAgreementGenerator/assets/115418017/5688ff51-6686-4d91-a899-c36c00851cf1)
+
 ## Author
 
 Szymon Poterejko
