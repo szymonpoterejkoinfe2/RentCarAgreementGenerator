@@ -141,3 +141,4 @@ E:\RentCarAgreementGenerator\obj\Debug\RentCarDocument.csproj.CoreCompileInputs.
 E:\RentCarAgreementGenerator\obj\Debug\RentCarDocument.csproj.CopyComplete
 E:\RentCarAgreementGenerator\obj\Debug\RentCarDocument.exe
 E:\RentCarAgreementGenerator\obj\Debug\RentCarDocument.pdb
+C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\obj\Debug\RentCarDocument.InitializeApplicationForm.resources

@@ -25,7 +25,7 @@ namespace RentCarDocument
             {
                 if (File.Exists(pathToDocument))
                 {
-                    string newFilePath = $@"C:\Users\Szymon\Desktop\FOCP\RentCarAgreementGenerator\GeneratedAgreements\umowa{reservation.reservationNumber}.docx";
+                    string newFilePath = $@"{User.folderPath}\umowa{reservation.reservationNumber}.docx";
 
                     using (WordprocessingDocument originalDoc = WordprocessingDocument.Open(pathToDocument, false))
                     {

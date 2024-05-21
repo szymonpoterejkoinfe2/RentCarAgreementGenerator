@@ -11,7 +11,7 @@ namespace RentCarDocument
 {
     internal class DataBase
     {
-        string connectionDetails = "server = localhost;uid=root;pwd=Goleszycow37;database=rentcar";
+        string connectionDetails = $"server={User.server};uid={User.username};pwd={User.password};database=rentcar";
 
         MySqlConnection connection;
 

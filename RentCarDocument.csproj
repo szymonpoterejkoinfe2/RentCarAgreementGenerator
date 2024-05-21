@@ -72,6 +72,7 @@
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Diagnostics.DiagnosticSource.7.0.2\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.IO.Pipelines, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.IO.Pipelines.5.0.2\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
@@ -134,6 +135,12 @@
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Info.cs" />
+    <Compile Include="InitializeApplicationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitializeApplicationForm.Designer.cs">
+      <DependentUpon>InitializeApplicationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +154,7 @@
     <Compile Include="Statistics.Designer.cs">
       <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="EditDataBase.resx">
       <DependentUpon>EditDataBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -155,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GenerateAgreementForm.resx">
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InitializeApplicationForm.resx">
+      <DependentUpon>InitializeApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
