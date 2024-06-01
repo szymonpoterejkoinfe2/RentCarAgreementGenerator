@@ -107,64 +107,64 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Accessories.cs" />
+    <Compile Include="AgreementInfo\Accessories.cs" />
     <Compile Include="Agreement.cs" />
-    <Compile Include="AverageValues.cs" />
-    <Compile Include="Car.cs" />
-    <Compile Include="CarBrand.cs" />
-    <Compile Include="CarModel.cs" />
-    <Compile Include="CarRentFrequency.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="DataBase.cs" />
-    <Compile Include="EditDataBase.cs">
+    <Compile Include="StatisticInfo\AverageValues.cs" />
+    <Compile Include="CarData\Car.cs" />
+    <Compile Include="CarData\CarBrand.cs" />
+    <Compile Include="CarData\CarModel.cs" />
+    <Compile Include="StatisticInfo\CarRentFrequency.cs" />
+    <Compile Include="AgreementInfo\Client.cs" />
+    <Compile Include="DatabaseInfo\DataBase.cs" />
+    <Compile Include="Forms\EditDataBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditDataBase.Designer.cs">
+    <Compile Include="Forms\EditDataBase.Designer.cs">
       <DependentUpon>EditDataBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GenerateAgreementForm.cs">
+    <Compile Include="Forms\GenerateAgreementForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GenerateAgreementForm.Designer.cs">
+    <Compile Include="Forms\GenerateAgreementForm.Designer.cs">
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Info.cs" />
-    <Compile Include="InitializeApplicationForm.cs">
+    <Compile Include="AgreementInfo\Info.cs" />
+    <Compile Include="Forms\InitializeApplicationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InitializeApplicationForm.Designer.cs">
+    <Compile Include="Forms\InitializeApplicationForm.Designer.cs">
       <DependentUpon>InitializeApplicationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Location.cs" />
+    <Compile Include="AgreementInfo\Location.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RentPeriodFrequency.cs" />
-    <Compile Include="RentPeriods.cs" />
-    <Compile Include="Reservation.cs" />
-    <Compile Include="StatisticalData.cs" />
-    <Compile Include="Statistics.cs">
+    <Compile Include="StatisticInfo\RentPeriodFrequency.cs" />
+    <Compile Include="StatisticInfo\RentPeriods.cs" />
+    <Compile Include="AgreementInfo\Reservation.cs" />
+    <Compile Include="StatisticInfo\StatisticalData.cs" />
+    <Compile Include="Forms\Statistics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Statistics.Designer.cs">
+    <Compile Include="Forms\Statistics.Designer.cs">
       <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
-    <EmbeddedResource Include="EditDataBase.resx">
+    <Compile Include="DatabaseInfo\User.cs" />
+    <EmbeddedResource Include="Forms\EditDataBase.resx">
       <DependentUpon>EditDataBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GenerateAgreementForm.resx">
+    <EmbeddedResource Include="Forms\GenerateAgreementForm.resx">
       <DependentUpon>GenerateAgreementForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InitializeApplicationForm.resx">
+    <EmbeddedResource Include="Forms\InitializeApplicationForm.resx">
       <DependentUpon>InitializeApplicationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -176,7 +176,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Statistics.resx">
+    <EmbeddedResource Include="Forms\Statistics.resx">
       <DependentUpon>Statistics.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
