@@ -48,7 +48,5 @@ namespace RentCarDocument
             return true;
         }
 
-
-
     }
 }
